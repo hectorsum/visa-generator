@@ -2,8 +2,7 @@
 /**
 * It calculates the sum of a given number using Luhn's algorithm
 */
-class LuhnCalculator
-{
+class LuhnCalculator{
     /**
      * Executes Luhn algorithm over the given number and return the sum. This
      * method does not include last digit of credit card number (verification
@@ -13,16 +12,13 @@ class LuhnCalculator
      *
      * @return integer
      */
-    public function sum($number)
-    {
+    public function sum($number){
         $numberArray = array_reverse(str_split($number));
-
         $sum = 0;
         for ($index = 0; $index < count($numberArray); $index++) {
             $digit = (int)$numberArray[$index];
             $sum += ($index % 2 == 0) ? $this->multiplyNumber($digit) : $digit;
         }
-
         return $sum;
     }
 
@@ -34,9 +30,8 @@ class LuhnCalculator
      *
      * @return integer
      */
-    public function verificationDigit($number)
-    {
-        return 10 - ($this->sum($number) % 10 ?: 10);
+    public function verificationDigit($number){
+      return 10 - ($this->sum($number) % 10 ?: 10);
     }
 
     /**
@@ -46,10 +41,8 @@ class LuhnCalculator
      *
      * @return integer
      */
-    private function multiplyNumber($number)
-    {
+    private function multiplyNumber($number){
         $result = $number * 2;
-
         return ($result >= 10) ? $result - 9 : $result;
     }
 }

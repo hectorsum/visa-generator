@@ -7,7 +7,7 @@
 * the internet easily.
 */
 require('LuhnCalculator.php');
-class Generator2
+class CardGenerator
 {
     /**
      * Generates the random credit card number using the given prefix and
@@ -18,7 +18,7 @@ class Generator2
      *
      * @return string
      */
-    public function single($prefix = null, $length = 16)
+    public function generateNumber($prefix = null, $length = 16)
     {
         if ($length <= strlen($prefix)) {
             throw new \InvalidArgumentException(
@@ -67,7 +67,7 @@ class Generator2
     public function getCVV($length = 3){
         $rand = '';
         for ($index = 0; $index < $length; $index++) {
-            $rand .= rand(0, 3);
+            $rand .= rand(1, 3);
         }
         return $rand;
     }
